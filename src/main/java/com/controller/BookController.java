@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.command.Command;
 import com.command.ListCommand;
+import com.command.ViewCommand;
 import com.command.WriteCommand;
 
 @WebServlet("*.do")
@@ -47,7 +48,9 @@ public class BookController extends HttpServlet {
 			viewPage = "list.jsp";
 			break;
 		case "/view.do":
-			// TODO
+			command = new ViewCommand();
+			command.execute(request, response);
+			viewPage = "view.jsp";
 			break;
 		case "/write.do":
 			viewPage = "write.jsp";

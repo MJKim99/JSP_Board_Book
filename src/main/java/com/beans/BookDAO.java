@@ -15,7 +15,7 @@ import common.D;
 public class BookDAO {
 
 	Connection conn;
-	Statement stmt;
+	
 	PreparedStatement pstmt;
 	ResultSet rs;
 
@@ -33,8 +33,7 @@ public class BookDAO {
 			rs.close();
 		if (pstmt != null)
 			pstmt.close();
-		if (stmt != null)
-			stmt.close();
+		
 		if (conn != null)
 			conn.close();
 	}
@@ -100,6 +99,46 @@ public class BookDAO {
 		}
 		
 		return cnt;
+	}
+
+	public List<BookDTO> readByUid(int uid) throws SQLException {
+		List<BookDTO> list = null;
+		
+		try {
+			conn.setAutoCommit(false);
+			pstmt = conn.prepareStatement(D.SQL_BOOK_INC_VIEWCNT);
+			pstmt.setInt(1, uid);
+			pstmt.executeUpdate();
+			pstmt.close();
+			
+			pstmt = conn.prepareStatement(D.SQL_BOOK_SELECT_BY_UID);
+			pstmt.setInt(1, uid);
+			rs = pstmt.executeQuery();
+			list = buildList(rs);
+			
+			conn.commit();
+		} catch (SQLException e) {
+			conn.rollback();
+			throw e;
+		} finally {
+			close();
+		}
+		
+		return list;
+	}
+	
+	public List<BookDTO> selectByUid(int uid) throws SQLException {
+		List<BookDTO> list = null;
+		
+		try {
+			pstmt = conn.prepareStatement(D.SQL_BOOK_SELECT_BY_UID);
+			pstmt.setInt(1, uid);
+			pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+		
+		return list;
 	}
 
 }

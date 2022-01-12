@@ -12,4 +12,9 @@ public class D {
 	public static final String SQL_BOOK_SELECT =
 			"SELECT bk_uid uid, bk_title title, bk_summary summary, bk_price price, "
 			+ "bk_viewcnt viewcnt, bk_regdate regdate " + "FROM book ORDER BY bk_uid DESC";
+	public static final String SQL_BOOK_SELECT_BY_UID =
+			"SELECT bk_uid uid, bk_title title, bk_summary summary, bk_price price,"
+			+ "bk_viewcnt viewcnt, bk_regdate regdate " + "FROM book WHERE bk_uid = ?";
+	public static final String SQL_BOOK_INC_VIEWCNT =
+			"UPDATE book SET bk_viewcnt = bk_viewcnt + 1 WHERE bk_uid = ?";
 }
