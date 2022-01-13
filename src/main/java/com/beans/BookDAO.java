@@ -133,12 +133,30 @@ public class BookDAO {
 		try {
 			pstmt = conn.prepareStatement(D.SQL_BOOK_SELECT_BY_UID);
 			pstmt.setInt(1, uid);
-			pstmt.executeUpdate();
+			rs = pstmt.executeQuery();
+			list = buildList(rs);
 		} finally {
 			close();
 		}
 		
 		return list;
+	}
+	
+	public int update(int uid, String title, String summary, int price) throws SQLException {
+		int cnt = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(D.SQL_BOOK_UPDATE);
+			pstmt.setString(1, title);
+			pstmt.setString(2, summary);
+			pstmt.setInt(3, price);
+			pstmt.setInt(4, uid);
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+		
+		return cnt;
 	}
 
 }

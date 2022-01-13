@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.command.Command;
 import com.command.ListCommand;
+import com.command.SelectCommand;
+import com.command.UpdateCommand;
 import com.command.ViewCommand;
 import com.command.WriteCommand;
 
@@ -61,10 +63,14 @@ public class BookController extends HttpServlet {
 			viewPage = "writeOk.jsp";
 			break;
 		case "/update.do":
-			// TODO
+			command = new SelectCommand();
+			command.execute(request, response);
+			viewPage = "update.jsp";
 			break;
 		case "/updateOk.do":
-			// TODO
+			command = new UpdateCommand();
+			command.execute(request, response);
+			viewPage = "updateOk.jsp";
 			break;
 		case "/deleteOk.do":
 			// TODO

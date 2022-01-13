@@ -9,16 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 import com.beans.BookDAO;
 import com.beans.BookDTO;
 
-public class ViewCommand implements Command {
+public class SelectCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		List<BookDTO> list = null;
-
 		int uid = Integer.parseInt(request.getParameter("uid"));
-
+		List<BookDTO> list = null;
+		
 		try {
-			list = new BookDAO().readByUid(uid);
+			list = new BookDAO().selectByUid(uid);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

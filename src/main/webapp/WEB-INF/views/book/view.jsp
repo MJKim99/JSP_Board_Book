@@ -25,24 +25,24 @@ if (list == null || list.size() == 0) {
 	String regDate = dto.getRegDateTime(); 
 %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
 <meta charset="UTF-8">
 <title>글 상세 보기</title>
 </head>
 <body>
-	<h1><%= title %> 정보</h1>
+	<h1><%=title%> 정보</h1>
 	<hr>
-	<strong>도서 제목</strong> <%= title %><br>
-	<strong>도서 가격</strong> <%= price %><br>
-	<strong>조회수</strong> <%= viewCnt %><br>
-	<strong>등록일</strong> <%= regDate %><br><br>
+	<strong>도서 제목</strong> <%=title%><br>
+	<strong>도서 가격</strong> <%=price%><br>
+	<strong>조회수</strong> <%=viewCnt%><br>
+	<strong>등록일</strong> <%=regDate%><br><br>
 	<strong>요약</strong><br>
-	<%= summary %>
+	<%=summary%>
 	<br><hr><br>
-	<button onclick="location.href=''">삭제하기</button>
-	<button onclick="location.href='list.do'">목록으로</button>
-	<button onclick="location.href='update.do?uid='<%= uid %>">수정하기</button>
-	<button onclick="location.href='write.do'">신규등록</button>
+	<button type="button" onclick="location.href='deleteOk.do?uid=<%=uid%>'">삭제하기</button>
+	<button type="button" onclick="location.href='list.do'">목록으로</button>
+	<button type="button" onclick="location.href='update.do?uid=<%=uid%>'">수정하기</button>
+	<button type="button" onclick="location.href='write.do'">신규등록</button>
 </body>
 </html>
