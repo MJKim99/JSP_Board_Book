@@ -159,4 +159,18 @@ public class BookDAO {
 		return cnt;
 	}
 
+	public int delete(int uid) throws SQLException {
+		int cnt = 0;
+		
+		try {
+			pstmt = conn.prepareStatement(D.SQL_BOOK_DELETE);
+			pstmt.setInt(1, uid);
+			cnt = pstmt.executeUpdate();
+		} finally {
+			close();
+		}
+		
+		return cnt;
+	}
+
 }

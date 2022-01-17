@@ -1,28 +1,26 @@
 package com.command;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.beans.BookDAO;
-import com.beans.BookDTO;
 
-public class SelectCommand implements Command {
+public class DeleteCommand implements Command {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		int cnt = 0;
 		int uid = Integer.parseInt(request.getParameter("uid"));
-		List<BookDTO> list = null;
-
+		
 		try {
-			list = new BookDAO().selectByUid(uid);
+			cnt = new BookDAO().delete(uid);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
-		request.setAttribute("list", list);
+		
+		request.setAttribute("result", cnt);
 	}
 
 }

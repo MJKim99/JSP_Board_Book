@@ -19,4 +19,6 @@ public class D {
 			"UPDATE book SET bk_viewcnt = bk_viewcnt + 1 WHERE bk_uid = ?";
 	public static final String SQL_BOOK_UPDATE = 
 			"UPDATE book SET bk_title = ?, bk_summary = ?, bk_price = ? WHERE bk_uid = ?";
+	public static final String SQL_BOOK_DELETE = 
+			"DELETE FROM book WHERE bk_uid = ?";
 }
