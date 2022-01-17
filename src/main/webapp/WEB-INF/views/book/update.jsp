@@ -21,7 +21,6 @@ if (list == null || list.size() == 0) {
 	String title = dto.getTitle();
 	String summary = dto.getSummary();
 	int price = dto.getPrice();
-	int viewCnt = dto.getViewCnt();
 	String regDate = dto.getRegDateTime(); 
 %>
 <!DOCTYPE html>

@@ -40,9 +40,18 @@ if (list == null || list.size() == 0) {
 	<strong>요약</strong><br>
 	<%=summary%>
 	<br><hr><br>
-	<button type="button" onclick="location.href='deleteOk.do?uid=<%=uid%>'">삭제하기</button>
+	<button type="button" onclick="chkDelete(<%=uid%>)">삭제하기</button>
 	<button type="button" onclick="location.href='list.do'">목록으로</button>
 	<button type="button" onclick="location.href='update.do?uid=<%=uid%>'">수정하기</button>
 	<button type="button" onclick="location.href='write.do'">신규등록</button>
+	
+	<script>
+	function chkDelete(uid) {
+		let r = confirm("삭제하시겠습니까?");
+		if (r) {
+			location.href = "deleteOk.do?uid=" + uid;
+		}
+	}
+	</script>
 </body>
 </html>
