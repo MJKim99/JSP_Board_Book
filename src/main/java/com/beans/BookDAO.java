@@ -159,7 +159,7 @@ public class BookDAO {
 		return cnt;
 	}
 
-	public int delete(int uid) throws SQLException {
+	public int deleteByUid(int uid) throws SQLException {
 		int cnt = 0;
 		
 		try {

@@ -15,7 +15,7 @@ public class DeleteCommand implements Command {
 		int uid = Integer.parseInt(request.getParameter("uid"));
 		
 		try {
-			cnt = new BookDAO().delete(uid);
+			cnt = new BookDAO().deleteByUid(uid);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
